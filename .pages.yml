@@ -1,0 +1,370 @@
+# Configurazione del pannello Pages CMS (https://app.pagescms.org)
+# Definisce quali campi compaiono nel pannello per ogni pagina e sezione.
+
+media:
+  input: foto
+  output: /foto
+  categories: [image]
+  rename: safe
+
+settings:
+  content:
+    merge: true
+
+components:
+
+  # ---------- campi ricorrenti ----------
+  sopratitolo:
+    label: "Sopratitolo (testo piccolo sopra il titolo)"
+    type: string
+  titolo:
+    label: "Titolo (vai a capo per spezzarlo su più righe)"
+    type: text
+  cartella:
+    label: "Cartella delle foto"
+    description: "Nome della cartella dentro /foto/<pagina>/ da cui prendere le foto. Tutte le foto messe lì compaiono automaticamente, in ordine di nome."
+    type: string
+  sfondo:
+    label: "Colore di sfondo"
+    type: select
+    options:
+      values: [crema, bianco, sabbia, verde, verde-scuro]
+  ancora:
+    label: "Ancora (facoltativo, per collegamenti tipo #lavori)"
+    type: string
+  nascondi:
+    label: "Nascondi questa sezione"
+    type: boolean
+  elenco_foto:
+    label: "Foto con didascalia (facoltativo)"
+    description: "Serve solo per aggiungere didascalie o decidere l'ordine. Le altre foto della cartella vengono mostrate comunque, dopo queste."
+    type: object
+    list: true
+    fields:
+      - { name: immagine, label: "Foto", type: image }
+      - { name: etichetta, label: "Etichetta (testo piccolo)", type: string }
+      - { name: titolo, label: "Didascalia", type: string }
+      - { name: alt, label: "Descrizione per Google e non vedenti (facoltativa)", type: string }
+
+  # ---------- le sezioni della pagina ----------
+  sezioni:
+    label: "Sezioni della pagina (dall'alto in basso)"
+    type: block
+    list: true
+    blockKey: tipo
+    blocks:
+
+      - name: testata
+        label: "Testata (foto grande con titolo)"
+        fields:
+          - { name: sopratitolo, component: sopratitolo }
+          - { name: titolo, component: titolo }
+          - { name: sottotitolo, label: "Sottotitolo", type: text }
+          - name: posizione_testo
+            label: "Posizione del testo sulla foto"
+            type: select
+            default: basso
+            options: { values: [alto, centro, basso] }
+          - name: posizione_testo_telefono
+            label: "Posizione del testo su telefono (se diversa)"
+            type: select
+            options: { values: [alto, centro, basso] }
+          - name: altezza
+            label: "Altezza della testata"
+            type: select
+            default: media
+            options: { values: [piccola, media, grande] }
+          - name: punto_focale
+            label: "Parte della foto da tenere visibile"
+            type: select
+            default: centro
+            options: { values: [alto, centro-alto, centro, centro-basso, basso] }
+          - name: pulsanti
+            label: "Pulsanti"
+            type: object
+            list: true
+            fields:
+              - { name: testo, label: "Testo", type: string }
+              - { name: link, label: "Collegamento (es. /contatti/ oppure #realizzazioni)", type: string }
+              - { name: stile, label: "Stile", type: select, options: { values: [pieno, contorno] } }
+          - name: cartella
+            component: cartella
+            default: testata
+            description: "Cartella della foto di testata. Se contiene una foto con \"mobile\" nel nome, quella viene usata sui telefoni."
+          - { name: alt, label: "Descrizione della foto (per Google)", type: string }
+          - { name: ancora, component: ancora }
+          - { name: nascondi, component: nascondi }
+
+      - name: testo
+        label: "Testo"
+        fields:
+          - { name: sopratitolo, component: sopratitolo }
+          - { name: titolo, component: titolo }
+          - { name: testo_evidenza, label: "Frase in evidenza (carattere grande)", type: text }
+          - { name: testo, label: "Testo", type: rich-text }
+          - name: disposizione
+            label: "Disposizione"
+            type: select
+            default: due-colonne
+            options: { values: [due-colonne, una-colonna] }
+          - { name: sfondo, component: sfondo }
+          - name: cartella
+            component: cartella
+            description: "Facoltativo. Se indicata, la prima foto della cartella viene mostrata sotto il testo."
+          - { name: ancora, component: ancora }
+          - { name: nascondi, component: nascondi }
+
+      - name: schede
+        label: "Schede numerate"
+        fields:
+          - { name: sopratitolo, component: sopratitolo }
+          - { name: titolo, component: titolo }
+          - name: schede
+            label: "Schede"
+            type: object
+            list: true
+            fields:
+              - { name: numero, label: "Numero o etichetta (es. 01 · SPAZIO)", type: string }
+              - { name: titolo, label: "Titolo", type: string }
+              - { name: testo, label: "Testo", type: text }
+          - name: dimensione
+            label: "Dimensione"
+            type: select
+            options: { values: [normale, grande] }
+          - { name: sfondo, component: sfondo, default: verde }
+          - { name: ancora, component: ancora }
+          - { name: nascondi, component: nascondi }
+
+      - name: foto
+        label: "Galleria di foto"
+        fields:
+          - { name: sopratitolo, component: sopratitolo }
+          - { name: titolo, component: titolo }
+          - { name: testo, label: "Testo (facoltativo)", type: rich-text }
+          - name: intestazione
+            label: "Posizione del testo"
+            type: select
+            default: sopra
+            options: { values: [sopra, affiancata] }
+          - name: stile
+            label: "Stile della galleria"
+            type: select
+            default: griglia
+            options: { values: [griglia, mosaico, affiancate, carosello] }
+          - { name: colonne, label: "Numero di colonne (griglia e affiancate)", type: number, default: 3 }
+          - name: formato
+            label: "Forma delle foto"
+            type: select
+            default: quadrato
+            options: { values: [quadrato, orizzontale, verticale, originale] }
+          - { name: ingrandisci, label: "Ingrandisci la foto al clic", type: boolean, default: true }
+          - { name: cartella, component: cartella, default: galleria }
+          - { name: foto, component: elenco_foto }
+          - { name: sfondo, component: sfondo }
+          - { name: ancora, component: ancora }
+          - { name: nascondi, component: nascondi }
+
+      - name: foto-e-testo
+        label: "Foto e testo"
+        fields:
+          - name: stile
+            label: "Stile"
+            type: select
+            default: affiancati
+            options: { values: [affiancati, sovrapposto, citazione] }
+          - { name: sopratitolo, component: sopratitolo }
+          - { name: titolo, component: titolo }
+          - { name: testo, label: "Testo", type: text }
+          - { name: nota, label: "Nota finale (testo piccolo)", type: string }
+          - { name: firma, label: "Firma (solo stile citazione)", type: string }
+          - name: lato_foto
+            label: "Lato della foto (o del riquadro nella citazione)"
+            type: select
+            options: { values: [sinistra, destra] }
+          - name: formato
+            label: "Forma della foto (stile affiancati)"
+            type: select
+            options: { values: [orizzontale, panoramico, quadrato, verticale, originale] }
+          - { name: titolo_principale, label: "Usa come titolo principale della pagina", type: boolean }
+          - { name: cartella, component: cartella, default: foto }
+          - { name: alt, label: "Descrizione della foto (per Google)", type: string }
+          - { name: sfondo, component: sfondo }
+          - { name: ancora, component: ancora }
+          - { name: nascondi, component: nascondi }
+
+      - name: foto-apertura
+        label: "Foto di apertura (a tutta larghezza, senza testo)"
+        fields:
+          - { name: cartella, component: cartella, default: apertura }
+          - { name: alt, label: "Descrizione della foto (per Google)", type: string }
+          - { name: ancora, component: ancora }
+          - { name: nascondi, component: nascondi }
+
+      - name: presentazione
+        label: "Presentazione (titolo principale con punti di forza)"
+        fields:
+          - { name: sopratitolo, component: sopratitolo }
+          - { name: titolo, component: titolo }
+          - { name: testo, label: "Testo", type: rich-text }
+          - name: punti
+            label: "Punti di forza"
+            type: object
+            list: true
+            fields:
+              - name: icona
+                label: "Icona"
+                type: select
+                options: { values: [foglia, persone, germoglio, casa, goccia, sole, scudo, orologio] }
+              - { name: testo, label: "Testo (vai a capo per due righe)", type: text }
+          - { name: mostra_recapiti, label: "Mostra telefoni, email e Instagram", type: boolean }
+          - { name: ancora, component: ancora }
+          - { name: nascondi, component: nascondi }
+
+      - name: servizi
+        label: "Elenco dei servizi (automatico)"
+        fields:
+          - { name: sopratitolo, component: sopratitolo }
+          - { name: titolo, component: titolo }
+          - { name: testo, label: "Testo", type: text }
+          - name: stile
+            label: "Stile"
+            type: select
+            default: schede
+            options: { values: [schede, elenco] }
+          - { name: testo_link, label: "Testo del collegamento (es. Scopri il servizio →)", type: string }
+          - { name: sfondo, component: sfondo }
+          - { name: ancora, component: ancora }
+          - { name: nascondi, component: nascondi }
+
+      - name: contatti
+        label: "Fascia contatti (telefoni ed email automatici)"
+        fields:
+          - { name: sopratitolo, component: sopratitolo, default: Contatti }
+          - { name: titolo, component: titolo }
+          - { name: testo, label: "Testo", type: text }
+          - { name: ancora, component: ancora }
+          - { name: nascondi, component: nascondi }
+
+      - name: modulo
+        label: "Modulo di contatto"
+        fields:
+          - { name: sopratitolo, component: sopratitolo }
+          - { name: titolo, component: titolo }
+          - { name: testo, label: "Testo", type: text }
+          - { name: oggetto_email, label: "Oggetto dell'email che ricevete", type: string }
+          - { name: testo_pulsante, label: "Testo del pulsante", type: string }
+          - { name: sfondo, component: sfondo, default: bianco }
+          - { name: ancora, component: ancora }
+          - { name: nascondi, component: nascondi }
+
+      - name: documento
+        label: "Documento (usa il testo lungo della pagina)"
+        fields:
+          - { name: sopratitolo, component: sopratitolo }
+          - { name: titolo, component: titolo }
+          - { name: aggiornamento, label: "Data ultimo aggiornamento", type: string }
+          - { name: sfondo, component: sfondo }
+          - { name: nascondi, component: nascondi }
+
+      - name: messaggio
+        label: "Messaggio (pagina di conferma o errore)"
+        fields:
+          - { name: sopratitolo, component: sopratitolo }
+          - { name: titolo, component: titolo }
+          - { name: testo, label: "Testo", type: text }
+          - name: pulsante
+            label: "Pulsante"
+            type: object
+            fields:
+              - { name: testo, label: "Testo", type: string }
+              - { name: link, label: "Collegamento", type: string }
+
+  # ---------- impostazioni per Google ----------
+  titolo_seo:
+    label: "Titolo per Google (compare nella scheda del browser)"
+    type: string
+  descrizione_seo:
+    label: "Descrizione per Google"
+    type: text
+
+content:
+
+  - name: impostazioni
+    label: "Impostazioni generali"
+    type: file
+    path: contenuti/impostazioni.yml
+    format: yaml
+    fields:
+      - { name: nome_sito, label: "Nome del sito", type: string }
+      - { name: nome_breve, label: "Nome breve (in alto a sinistra)", type: string }
+      - { name: motto, label: "Motto (sotto il nome)", type: string }
+      - { name: ragione_sociale, label: "Ragione sociale", type: string }
+      - { name: partita_iva, label: "Partita IVA (compare in fondo a ogni pagina)", type: string }
+      - { name: indirizzo, label: "Indirizzo", type: string }
+      - { name: cap, label: "CAP", type: string }
+      - { name: citta, label: "Città", type: string }
+      - { name: provincia, label: "Provincia", type: string }
+      - { name: zona_operativa, label: "Zona operativa", type: string }
+      - { name: dominio, label: "Indirizzo del sito (es. https://www.sanicapalermo.it)", type: string }
+      - name: telefoni
+        label: "Telefoni"
+        type: object
+        list: true
+        fields:
+          - { name: nome, label: "Nome", type: string }
+          - { name: numero, label: "Numero", type: string }
+      - { name: email, label: "Email (riceve anche i messaggi del modulo)", type: string }
+      - { name: instagram, label: "Instagram (nome utente, senza @)", type: string }
+      - { name: logo, label: "Logo in alto", type: image }
+      - { name: icona_sito, label: "Icona del sito (scheda del browser)", type: image }
+      - name: pulsante_intestazione
+        label: "Pulsante in alto a destra"
+        type: object
+        fields:
+          - { name: testo, label: "Testo", type: string }
+          - { name: link, label: "Collegamento", type: string }
+      - name: menu
+        label: "Menu"
+        type: object
+        list: true
+        fields:
+          - { name: testo, label: "Testo", type: string }
+          - { name: link, label: "Collegamento (es. /chi-siamo/)", type: string }
+      - { name: testo_piede, label: "Testo in fondo alle pagine", type: string }
+
+  - name: pagine
+    label: "Pagine"
+    type: collection
+    path: contenuti/pagine
+    format: yaml-frontmatter
+    view:
+      primary: titolo_seo
+      fields: [titolo_seo]
+    fields:
+      - { name: titolo_seo, component: titolo_seo }
+      - { name: descrizione_seo, component: descrizione_seo }
+      - { name: indirizzo, label: "Indirizzo della pagina (facoltativo, es. /contatti/grazie/)", type: string }
+      - { name: nascondi_da_google, label: "Nascondi da Google", type: boolean }
+      - { name: bozza, label: "Bozza (non pubblicare)", type: boolean }
+      - { name: sezioni, component: sezioni }
+      - { name: body, label: "Testo lungo (usato dalla sezione Documento)", type: rich-text }
+
+  - name: servizi
+    label: "Servizi"
+    type: collection
+    path: contenuti/servizi
+    format: yaml-frontmatter
+    filename: "{fields.nome}.md"
+    view:
+      primary: nome
+      fields: [nome, ordine]
+    fields:
+      - { name: nome, label: "Nome del servizio", type: string, required: true }
+      - { name: riassunto, label: "Riassunto (compare nell'elenco dei servizi in home)", type: text }
+      - { name: ordine, label: "Posizione nell'elenco (1 = primo)", type: number }
+      - { name: indirizzo, label: "Indirizzo della pagina (facoltativo)", type: string }
+      - { name: nascondi_dagli_elenchi, label: "Non mostrarlo negli elenchi dei servizi", type: boolean }
+      - { name: bozza, label: "Bozza (non pubblicare)", type: boolean }
+      - { name: titolo_seo, component: titolo_seo }
+      - { name: descrizione_seo, component: descrizione_seo }
+      - { name: sezioni, component: sezioni }

@@ -1,0 +1,54 @@
+# Ricostruisce e pubblica il sito ogni volta che cambia qualcosa nel ramo principale.
+name: Pubblica il sito
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  costruisci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Installa gli strumenti
+        run: npm install --no-audit --no-fund
+
+      # Riusa le foto già elaborate nelle pubblicazioni precedenti (molto più veloce)
+      - name: Recupera le foto già elaborate
+        uses: actions/cache@v4
+        with:
+          path: _site/img
+          key: foto-${{ hashFiles('foto/**', 'sito/costruisci.js') }}
+          restore-keys: foto-
+
+      - name: Genera il sito
+        run: npm run costruisci
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  pubblica:
+    needs: costruisci
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

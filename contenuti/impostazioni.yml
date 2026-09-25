@@ -1,0 +1,46 @@
+# Impostazioni generali del sito: valgono per tutte le pagine.
+
+nome_sito: Sa.Ni.Ca. — I Creatori del Verde
+nome_breve: Sa.Ni.Ca.
+motto: I CREATORI DEL VERDE
+ragione_sociale: Sa.Ni.Ca. i creatori del verde
+partita_iva: ""
+indirizzo: Viale Francia
+cap: "90141"
+citta: Palermo
+provincia: PA
+zona_operativa: Palermo e provincia
+
+# Indirizzo del sito (senza barra finale). Serve per Google e per le anteprime sui social.
+dominio: https://www.sanicapalermo.it
+
+telefoni:
+  - nome: Sebastiano
+    numero: 375 735 0083
+  - nome: Salvo
+    numero: 320 846 3366
+email: sanica.palermo@gmail.com
+instagram: sanica.palermo
+
+logo: /foto/logo/logo-intestazione.png
+icona_sito: /foto/logo/logo-completo.webp
+
+pulsante_intestazione:
+  testo: Parliamone
+  link: /contatti/
+
+menu:
+  - testo: Home
+    link: /
+  - testo: Chi siamo
+    link: /chi-siamo/
+  - testo: Qualità
+    link: /qualita/
+  - testo: Servizi
+    link: /servizi/
+  - testo: Realizzazioni
+    link: /realizzazioni/
+  - testo: Contatti
+    link: /contatti/
+
+testo_piede: SA.NI.CA. — I CREATORI DEL VERDE · PALERMO E PROVINCIA

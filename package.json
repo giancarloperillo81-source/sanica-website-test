@@ -1,0 +1,16 @@
+{
+  "name": "sanica-sito",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Sito Sa.Ni.Ca. — I Creatori del Verde. Testi in /contenuti, foto in /foto.",
+  "scripts": {
+    "costruisci": "node sito/costruisci.js",
+    "anteprima": "node sito/costruisci.js --anteprima"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "markdown-it": "^14.1.0",
+    "sharp": "^0.34.5"
+  }
+}

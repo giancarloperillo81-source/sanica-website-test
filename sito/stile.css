@@ -1,0 +1,349 @@
+/* ==========================================================================
+   Sa.Ni.Ca. — foglio di stile unico del sito
+   Non serve modificarlo per aggiornare testi e foto.
+   ========================================================================== */
+
+:root{--g:#1d4b31;--g2:#2e6844;--cream:#f5f2e9;--sabbia:#e5e1d5;--ink:#182219;--muted:#667068;--line:#d7d8ce;--scuro:#132b1d;--testata:#173622}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",Arial,sans-serif;line-height:1.55;padding-top:92px}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;height:auto}
+.wrap{max-width:1220px;margin:auto;padding:0 34px}
+.serif{font:400 clamp(46px,6vw,78px)/.95 "DM Serif Display",Georgia,serif}
+.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.2em;margin-bottom:0}
+
+/* ---------- Intestazione ---------- */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--testata);color:#fff;width:100%}
+.site-header .nav{min-height:92px;height:92px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.site-header .brand{display:flex;align-items:center;gap:10px;color:#fff;font-size:16px;font-weight:600;letter-spacing:.12em;line-height:1}
+.site-header .brand small{display:block;color:#fff;font-size:8px;font-weight:400;letter-spacing:.2em;margin-top:6px}
+.brand-logo{width:34px;height:34px;object-fit:contain;display:block;flex:0 0 34px}
+.site-header .links{display:flex;align-items:center;gap:30px;font-size:12px}
+.site-header .links a,.site-header .mobile-menu a{color:#fff}
+.site-header .links a[aria-current="page"]{text-decoration:underline;text-underline-offset:6px}
+.site-header .navbtn{border:1px solid rgba(255,255,255,.75);padding:11px 18px;border-radius:30px;font-size:11px;color:#fff;white-space:nowrap}
+.menu-toggle{display:none;position:relative;width:44px;height:44px;border:1px solid rgba(255,255,255,.75);border-radius:50%;background:transparent;color:#fff;cursor:pointer;padding:0;z-index:20}
+.menu-toggle span,.menu-toggle span:before,.menu-toggle span:after{content:"";position:absolute;left:13px;width:18px;height:1.5px;background:currentColor;transition:transform .2s ease,opacity .2s ease}
+.menu-toggle span{top:21px}.menu-toggle span:before{left:0;top:-6px}.menu-toggle span:after{left:0;top:6px}
+.mobile-menu{display:none}
+
+/* ---------- Piede ---------- */
+footer{background:var(--testata);color:#fff;font-size:10px}
+footer .foot{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:28px;padding-bottom:28px}
+footer .foot-links{display:flex;gap:22px}
+.footer-contact-icons{display:flex;align-items:center;gap:9px}
+.footer-contact-icons a{width:34px;height:34px;border:1px solid rgba(255,255,255,.24);border-radius:50%;display:grid;place-items:center;color:#fff}
+.footer-contact-icons svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.foot-legal{opacity:.7;margin-top:4px}
+
+/* ---------- Sfondi delle sezioni ---------- */
+.sezione{padding:115px 0}
+.sezione.attaccata{padding-top:0!important}
+.sfondo-crema{background:var(--cream)}
+.sfondo-bianco{background:#fff}
+.sfondo-sabbia{background:var(--sabbia)}
+.sfondo-verde{background:var(--g);color:#fff}
+.sfondo-verde-scuro{background:var(--scuro);color:#fff}
+.sfondo-verde .bodycopy,.sfondo-verde-scuro .bodycopy{color:#d9e2da}
+.sfondo-verde .label,.sfondo-verde-scuro .label{color:#c9d4cb}
+
+/* ---------- Testata (immagine grande con titolo) ---------- */
+.testata{position:relative;display:flex;color:#fff;overflow:hidden;background:var(--testata);min-height:72vh}
+.testata>picture{position:absolute;inset:0;display:block}
+.testata>picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.testata:after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(5,18,10,.12),rgba(5,18,10,.8))}
+.testata>.wrap{position:relative;z-index:2;width:100%;display:flex}
+.testata-contenuto{max-width:900px}
+.crumb{font-size:11px;margin-bottom:28px;opacity:.85}
+.testata h1{font-size:clamp(58px,8vw,105px);line-height:.9;margin:0 0 22px;letter-spacing:-.04em}
+.testata p{font-size:21px;max-width:690px;margin:0}
+.azioni{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{background:#fff;color:var(--g);padding:14px 20px;border-radius:30px;font-size:12px;font-weight:600}
+.btn.contorno{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.75)}
+/* altezze */
+.testata--grande{min-height:94vh}
+.testata--grande h1{font-size:clamp(62px,9vw,120px);line-height:.88;letter-spacing:-.045em;margin:18px 0 26px}
+.testata--grande p{font-size:clamp(18px,2vw,24px);max-width:680px}
+.testata--grande .crumb{font-size:10px;text-transform:uppercase;letter-spacing:.2em;opacity:1;margin-bottom:0}
+.testata--piccola{min-height:52vh}
+/* posizione del testo */
+.testata--basso{align-items:flex-end}
+.testata--basso>.wrap{padding-bottom:68px}
+.testata--grande.testata--basso>.wrap{padding-bottom:82px}
+.testata--centro{align-items:center}
+.testata--centro>.wrap{padding-top:60px;padding-bottom:60px}
+.testata--centro:after{background:linear-gradient(180deg,rgba(5,18,10,.35),rgba(5,18,10,.55))}
+.testata--alto{align-items:flex-start}
+.testata--alto>.wrap{padding-top:70px;padding-bottom:60px}
+.testata--alto:after{background:linear-gradient(0deg,rgba(5,18,10,.12),rgba(5,18,10,.8))}
+
+/* ---------- Testo ---------- */
+.grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:100px}
+.lead{font:400 34px/1.12 "DM Serif Display",Georgia,serif;margin:0 0 28px}
+.bodycopy{font-size:18px;color:#505a52;max-width:720px}
+.bodycopy p{margin:1em 0}
+.bodycopy a{text-decoration:underline;text-underline-offset:3px}
+.testo-foto{margin-top:45px}
+.testo-foto img{width:100%;display:block;object-fit:cover}
+
+/* ---------- Schede numerate ---------- */
+.cards{display:grid;grid-template-columns:repeat(var(--n,3),1fr);gap:1px;background:rgba(255,255,255,.2);margin-top:55px}
+.sfondo-crema .cards,.sfondo-bianco .cards,.sfondo-sabbia .cards{background:var(--line)}
+.card{padding:32px 28px 38px;background:var(--g);min-height:250px}
+.sfondo-crema .card{background:var(--cream)}.sfondo-bianco .card{background:#fff}.sfondo-sabbia .card{background:var(--sabbia)}.sfondo-verde-scuro .card{background:var(--scuro)}
+.card .num{font-size:10px;letter-spacing:.18em;opacity:.5}
+.card h3{font:400 34px "DM Serif Display",Georgia,serif;margin:52px 0 10px}
+.card p{margin:0}
+.sfondo-verde .card p,.sfondo-verde-scuro .card p{color:#d9e2da}
+.schede--grande{padding:120px 0}
+.schede--grande .cards{margin-top:60px}
+.schede--grande .card{padding:34px 30px 42px;min-height:305px}
+.schede--grande .card h3{font-size:40px;margin:62px 0 10px}
+
+/* ---------- Intestazione affiancata (titolo a sinistra, testo a destra) ---------- */
+.head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:55px}
+.head>p,.head>.head-testo{max-width:500px;color:var(--muted);font-size:16px;margin:0}
+.head-testo p{margin:0 0 10px}
+.sfondo-verde .head>p,.sfondo-verde-scuro .head>p{color:#d9e2da}
+.intro-foto{max-width:660px;margin-bottom:60px}
+.intro-foto .bodycopy p:last-child{margin-bottom:0}
+.intro-foto--breve{margin-bottom:38px}
+.intro-foto--breve h2{margin-bottom:0}
+
+/* ---------- Foto: griglia ---------- */
+.galleria-griglia{display:grid;grid-template-columns:repeat(var(--colonne,3),minmax(0,1fr));gap:var(--spazio,12px)}
+.galleria-griglia figure{margin:0;overflow:hidden;background:#e8e5db}
+.galleria-griglia img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.galleria-griglia figure:hover img{transform:scale(1.04)}
+.formato-quadrato figure{aspect-ratio:1/1}
+.formato-orizzontale figure{aspect-ratio:4/3}
+.formato-verticale figure{aspect-ratio:3/4}
+.formato-originale figure{aspect-ratio:auto}.formato-originale img{height:auto}
+figcaption{padding:10px 2px 0;font-size:13px;color:var(--muted)}
+.formato-quadrato figcaption,.formato-orizzontale figcaption,.formato-verticale figcaption{display:none}
+
+/* ---------- Foto: mosaico ---------- */
+.mosaico{display:grid;gap:18px}
+.mosaico-gruppo{display:grid;grid-template-columns:1.35fr .65fr;gap:18px}
+.mosaico-gruppo.inverso{grid-template-columns:.65fr 1.35fr}.mosaico-gruppo.inverso .side{order:-1}
+.mosaico-gruppo.solo{grid-template-columns:1fr}
+.mosaico-gruppo.coppia{grid-template-columns:1fr 1fr}.mosaico-gruppo.coppia .pic{min-height:480px}
+.pic{position:relative;overflow:hidden;background:#ddd;min-height:650px;margin:0}
+.pic.small{min-height:316px}
+.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s}
+.pic:hover img{transform:scale(1.025)}
+.pic.con-didascalia:after{content:"";position:absolute;inset:42% 0 0;background:linear-gradient(transparent,rgba(7,18,11,.8));pointer-events:none}
+.pic .caption{position:absolute;z-index:2;left:28px;bottom:26px;color:#fff;pointer-events:none}
+.caption small{font-size:9px;letter-spacing:.17em;text-transform:uppercase}
+.pic .caption h3{font:400 34px "DM Serif Display",Georgia,serif;margin:6px 0 0}
+.side{display:grid;gap:18px}
+
+/* ---------- Foto: affiancate con didascalia sotto ---------- */
+.two{display:grid;grid-template-columns:repeat(var(--colonne,2),minmax(0,1fr));gap:22px}
+.two figure{margin:0}
+.two img{width:100%;display:block;object-fit:cover}
+.two.formato-quadrato img{aspect-ratio:1/1}.two.formato-orizzontale img{aspect-ratio:4/3}.two.formato-verticale img{aspect-ratio:3/4}
+.two.formato-quadrato figure,.two.formato-orizzontale figure,.two.formato-verticale figure{aspect-ratio:auto}
+.label{font-size:9px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin-top:13px}
+.two h3{font:400 32px "DM Serif Display",Georgia,serif;margin:5px 0}
+
+/* ---------- Foto: carosello ---------- */
+.carosello{position:relative}
+.carosello-pista{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:6px;scrollbar-width:thin}
+.carosello-pista figure{flex:0 0 auto;margin:0;scroll-snap-align:start;height:440px}
+.carosello-pista img{height:100%;width:auto;display:block;object-fit:cover}
+.carosello-pista.formato-quadrato img{aspect-ratio:1/1}.carosello-pista.formato-orizzontale img{aspect-ratio:4/3}.carosello-pista.formato-verticale img{aspect-ratio:3/4}
+.carosello-pista .caption{margin-top:10px}.carosello-pista .caption h3{font:400 24px "DM Serif Display",Georgia,serif;margin:4px 0 0}
+.carosello-pista figure.con-didascalia{height:auto}.carosello-pista figure.con-didascalia img{height:440px}
+.carosello-frecce{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
+.carosello-frecce button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:transparent;color:inherit;font-size:18px;cursor:pointer}
+.sfondo-verde .carosello-frecce button,.sfondo-verde-scuro .carosello-frecce button{border-color:rgba(255,255,255,.4)}
+
+/* Foto ingrandibili */
+[data-grande]{cursor:zoom-in}
+.lightbox{position:fixed;inset:0;z-index:2000;background:rgba(8,16,11,.94);display:none;align-items:center;justify-content:center}
+.lightbox.aperto{display:flex}
+.lightbox img{max-width:92vw;max-height:86vh;object-fit:contain;display:block}
+.lightbox button{position:absolute;background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;width:48px;height:48px;border-radius:50%;font-size:20px;cursor:pointer}
+.lightbox .lb-chiudi{top:20px;right:20px}.lightbox .lb-prec{left:20px;top:50%;transform:translateY(-50%)}.lightbox .lb-succ{right:20px;top:50%;transform:translateY(-50%)}
+.lightbox .lb-didascalia{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:#d9e2da;font-size:13px}
+
+/* ---------- Foto e testo ---------- */
+.affiancati{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.affiancati.foto-destra .affiancati-foto{order:2}
+.affiancati-foto img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.affiancati-foto.formato-quadrato img{aspect-ratio:1/1}.affiancati-foto.formato-verticale img{aspect-ratio:3/4}.affiancati-foto.formato-panoramico img{aspect-ratio:3/2}.affiancati-foto.formato-originale img{aspect-ratio:auto}
+.affiancati-testo .bodycopy{font-size:18px;color:#566057;max-width:560px}
+.affiancati-testo h1{font:400 clamp(52px,6vw,82px)/.95 "DM Serif Display",Georgia,serif;letter-spacing:-.04em;margin:18px 0 24px}
+.affiancati-testo h1 + .bodycopy{font-size:20px;color:#505a52;max-width:620px;margin-top:0}
+.mini{margin-top:25px;font-size:10px;text-transform:uppercase;letter-spacing:.16em}
+.sezione.foto-e-testo--affiancati{padding:110px 0}
+.foto-e-testo--principale{padding:110px 0 95px!important}
+
+.sovrapposto,.citazione{position:relative;overflow:hidden;background:var(--testata)}
+.sovrapposto>img,.citazione>img{display:block;width:100%;height:min(620px,70vw);min-height:420px;object-fit:cover}
+.sovrapposto:after,.citazione:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,18,10,.05),rgba(5,18,10,.6));pointer-events:none}
+.sovrapposto-testo{position:absolute;left:clamp(24px,7vw,110px);bottom:clamp(28px,6vw,72px);z-index:2;max-width:650px;color:#fff}
+.sovrapposto-testo h2{font:400 clamp(40px,5.2vw,72px)/.98 "DM Serif Display",Georgia,serif;margin:0 0 18px;letter-spacing:-.035em}
+.sovrapposto-testo .eyebrow{margin-bottom:14px}
+.sovrapposto-testo p{font-size:18px;line-height:1.5;max-width:620px;margin:0}
+.citazione-box{position:absolute;right:clamp(20px,8vw,120px);bottom:clamp(24px,7vw,70px);z-index:2;background:var(--testata);color:#fff;border-radius:24px;padding:30px 34px;max-width:390px;box-shadow:0 18px 50px rgba(0,0,0,.18)}
+.citazione-box.sinistra{right:auto;left:clamp(20px,8vw,120px)}
+.quote-mark{font:400 50px/1 Georgia,serif;color:#a7c58e;margin-bottom:5px}
+.citazione-box p{font:400 22px/1.28 "DM Serif Display",Georgia,serif;margin:0 0 22px}
+.citazione-box>span{font-size:12px;letter-spacing:.12em;font-weight:600}
+.citazione-box>span small{display:block;font-size:8px;letter-spacing:.18em;font-weight:400;margin-top:4px}
+
+/* ---------- Foto di apertura e presentazione ---------- */
+.foto-apertura{width:100%;background:var(--testata);line-height:0}
+.foto-apertura img{display:block;width:100%;height:auto;max-height:720px;object-fit:cover;object-position:center}
+.presentazione{background:#f6f3ea;padding:78px 0 74px}
+.presentazione .wrap{max-width:980px}
+.presentazione h1{font:400 clamp(48px,6vw,82px)/.96 "DM Serif Display",Georgia,serif;letter-spacing:-.04em;margin:16px 0 24px;color:var(--testata)}
+.presentazione-testo{font-size:19px;line-height:1.55;color:#59635b;max-width:760px}
+.presentazione-testo p{margin:0 0 14px}.presentazione-testo p:last-child{margin:0}
+.about-points{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:42px}
+.about-points>div{display:flex;flex-direction:column;align-items:flex-start;gap:12px;color:var(--testata);font-size:15px;line-height:1.3}
+.point-icon{width:48px;height:48px;color:var(--g2)}
+.point-icon svg{width:48px;height:48px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.contact-cards{display:grid;gap:12px;max-width:680px;margin-top:32px}
+.contact-card{display:flex;align-items:center;gap:15px;background:#ecebe3;border-radius:14px;padding:15px 18px;color:var(--testata)}
+.contact-card-icon{width:34px;height:34px;flex:0 0 34px;display:grid;place-items:center;color:var(--g2)}
+.contact-card-icon svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.contact-card small{display:block;color:#687168;font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px}
+.contact-card strong{font-size:16px;font-weight:500}
+
+/* ---------- Servizi ---------- */
+.servicegrid{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line)}
+.service{padding:34px 34px 38px 0;border-bottom:1px solid var(--line);min-height:220px}
+.service:nth-child(even){border-left:1px solid var(--line);padding-left:34px}
+.service h3{font:400 31px "DM Serif Display",Georgia,serif;margin:0 0 12px}
+.service p{font-size:15px;color:#606a62;max-width:470px;margin:0}
+.service strong{display:block;margin-top:17px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--g)}
+.sezione.servizi--schede{padding:125px 0}
+.elenco-servizi{margin-top:50px;border-top:1px solid var(--line)}
+.elenco-servizi a{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;border-bottom:1px solid var(--line);font:400 28px/1.15 "DM Serif Display",Georgia,serif;transition:color .2s,padding .2s}
+.elenco-servizi a span{font:400 20px "DM Sans",Arial,sans-serif;color:var(--g)}
+.elenco-servizi a:hover{color:var(--g);padding-left:8px}
+
+/* ---------- Contatti (fascia finale) ---------- */
+.cta{background:var(--scuro);color:#fff;padding:105px 0}
+.cta-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:80px}
+.cta p{color:#d5ded6;font-size:17px;max-width:580px}
+.cta-links{align-self:end}
+.cta-links a{display:block;border-bottom:1px solid rgba(255,255,255,.2);padding:16px 0;font-size:14px}
+
+/* ---------- Modulo contatti ---------- */
+.contact-form-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:start}
+.contact-form-layout h2{font:400 clamp(44px,5vw,68px)/1 "DM Serif Display",Georgia,serif;margin:15px 0}
+.contact-form-layout .bodycopy{font-size:18px;color:#59635b}
+.contact-form-wrap{background:#eeece3;border-radius:24px;padding:34px}
+.contact-form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.contact-form .full{grid-column:1/-1}
+.contact-form label{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px}
+.contact-form input,.contact-form textarea{width:100%;border:1px solid #d9d6cc;background:#fff;border-radius:12px;padding:14px 15px;font:inherit;color:var(--ink)}
+.contact-form textarea{min-height:150px;resize:vertical}
+.contact-form button{grid-column:1/-1;justify-self:start;border:0;background:var(--g);color:#fff;border-radius:30px;padding:13px 24px;font:600 13px "DM Sans",Arial,sans-serif;cursor:pointer}
+.contact-form button:hover{background:var(--g2)}
+.privacy-note{font-size:11px;color:#687168;margin:0}
+.privacy-note a{text-decoration:underline}
+.nascosto{position:absolute;left:-9999px;opacity:0}
+
+/* ---------- Documento (privacy, cookie) ---------- */
+.prose{max-width:850px}
+.prose h2{margin-bottom:10px}
+.prose h3{font:600 20px/1.2 "DM Sans",Arial,sans-serif;margin:35px 0 10px}
+.prose p,.prose li{font-size:17px;color:#4f5951}
+.prose ul{padding-left:22px}
+.prose a{text-decoration:underline;text-underline-offset:3px}
+.prose blockquote,.note{border-left:3px solid var(--g);padding:16px 20px;background:#ece9df;margin:28px 0;color:#465047}
+.prose blockquote p{margin:0;color:#465047}
+
+/* ---------- Messaggio (pagina di conferma, 404) ---------- */
+.messaggio{min-height:62vh;display:grid;place-items:center;text-align:center;padding:80px 20px}
+.messaggio .box{max-width:680px}
+.messaggio .eyebrow{color:var(--g);font-size:11px}
+.messaggio h1{font:400 56px/1 "DM Serif Display",Georgia,serif;margin:18px 0}
+.messaggio p{font-size:18px;color:#687168}
+.messaggio .btn{display:inline-block;margin-top:20px;background:var(--g);color:#fff;padding:13px 22px;font-size:14px;font-weight:400}
+
+/* ==========================================================================
+   Telefono e tablet
+   ========================================================================== */
+@media(max-width:850px){
+  body{padding-top:84px}
+  .wrap{padding:0 20px}
+  .site-header .nav{min-height:84px;height:84px}
+  .site-header .links,.site-header .navbtn{display:none}
+  .menu-toggle{display:block}
+  .brand-logo{width:32px;height:32px;flex-basis:32px}
+  .site-header .mobile-menu{position:absolute;top:74px;left:20px;right:20px;display:flex;flex-direction:column;padding:10px 18px;background:rgba(29,75,49,.99);border:1px solid rgba(255,255,255,.18);border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.18);opacity:0;visibility:hidden;transform:translateY(-8px);pointer-events:none;transition:opacity .2s ease,transform .2s ease,visibility .2s ease}
+  .site-header .mobile-menu a{padding:13px 2px;font-size:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .site-header .mobile-menu a:last-child{border-bottom:0}
+  .site-header.menu-open .mobile-menu{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
+  .site-header.menu-open .menu-toggle span{transform:rotate(45deg)}
+  .site-header.menu-open .menu-toggle span:before{transform:translateY(6px) rotate(90deg)}
+  .site-header.menu-open .menu-toggle span:after{opacity:0}
+  footer .foot{display:block}
+  .footer-contact-icons{margin:14px 0}
+  footer .foot-links{margin-top:12px}
+
+  .sezione,.schede--grande,.sezione.servizi--schede,.sezione.foto-e-testo--affiancati{padding:80px 0}
+  .foto-e-testo--principale{padding:70px 0 60px!important}
+  .testata{min-height:70vh}
+  .testata--grande{min-height:86vh}
+  .testata--piccola{min-height:48vh}
+  .testata--basso>.wrap{padding-bottom:50px}
+  .testata--grande.testata--basso>.wrap{padding-bottom:55px}
+  .testata--centro>.wrap{padding-top:40px;padding-bottom:40px}
+  .testata--alto>.wrap{padding-top:44px}
+  /* posizione del testo solo su telefono */
+  .testata.m-basso{align-items:flex-end}.testata.m-basso>.wrap{padding-top:40px;padding-bottom:50px}
+  .testata.m-basso:after{background:linear-gradient(180deg,rgba(5,18,10,.12),rgba(5,18,10,.8))}
+  .testata.m-centro{align-items:center}.testata.m-centro>.wrap{padding-top:40px;padding-bottom:40px}
+  .testata.m-centro:after{background:linear-gradient(180deg,rgba(5,18,10,.35),rgba(5,18,10,.55))}
+  .testata.m-alto{align-items:flex-start}.testata.m-alto>.wrap{padding-top:44px;padding-bottom:40px}
+  .testata.m-alto:after{background:linear-gradient(0deg,rgba(5,18,10,.12),rgba(5,18,10,.8))}
+
+  .grid,.cta-grid,.affiancati,.contact-form-layout{grid-template-columns:1fr;gap:30px}
+  .affiancati.foto-destra .affiancati-foto{order:0}
+  .affiancati-testo h1{font-size:52px}
+  .cards{grid-template-columns:1fr}
+  .card,.schede--grande .card{min-height:0}
+  .card h3,.schede--grande .card h3{margin:28px 0 8px}
+  .head{display:block}.head>p,.head>.head-testo{margin-top:18px}
+  .galleria-griglia{grid-template-columns:repeat(var(--colonne-m,2),minmax(0,1fr));gap:10px}
+  .mosaico-gruppo,.mosaico-gruppo.inverso,.mosaico-gruppo.coppia{grid-template-columns:1fr}
+  .mosaico-gruppo.inverso .side{order:0}
+  .pic,.pic.small,.mosaico-gruppo.coppia .pic{min-height:390px}
+  .two{grid-template-columns:1fr}
+  .carosello-pista figure,.carosello-pista figure.con-didascalia img{height:300px}
+  .servicegrid{grid-template-columns:1fr}
+  .service:nth-child(even){border-left:0;padding-left:0}
+  .elenco-servizi a{font-size:23px}
+
+  .foto-apertura img{height:calc(100vw * .78);min-height:280px;max-height:none}
+  .presentazione{padding:54px 0 48px}
+  .presentazione h1{font-size:clamp(48px,13vw,70px)}
+  .presentazione-testo{font-size:17px;line-height:1.5}
+  .about-points{gap:18px;margin-top:32px}
+  .about-points>div{font-size:13px}
+  .contact-card{padding:14px 15px}.contact-card strong{font-size:14px}
+  .sovrapposto>img,.citazione>img{height:115vw;min-height:430px}
+  .sovrapposto-testo{left:20px;right:20px;bottom:28px;max-width:none}
+  .sovrapposto-testo h2{font-size:44px}
+  .sovrapposto-testo p{font-size:16px}
+  .citazione-box,.citazione-box.sinistra{left:20px;right:20px;bottom:24px;max-width:none;padding:26px 24px;border-radius:20px}
+  .citazione-box p{font-size:21px}
+  .contact-form-wrap{padding:24px 20px;border-radius:20px}
+  .contact-form{grid-template-columns:1fr}
+  .contact-form .full,.contact-form button{grid-column:auto}
+  .messaggio h1{font-size:44px}
+}
+@media(max-width:520px){
+  .galleria-griglia.colonne-poche{grid-template-columns:1fr}
+}
+@media(max-width:420px){
+  .testata h1{font-size:min(58px,14vw)}
+}
